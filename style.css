@@ -1,0 +1,313 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#fff;
+  color:#111;
+  line-height:1.6;
+}
+
+header{
+  background:#4b0f1c;
+  color:#fff;
+  text-align:center;
+  padding:50px 20px;
+}
+
+nav{
+  background:#111;
+  text-align:center;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+nav a{
+  color:#fff;
+  margin:0 10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+.titolo-sezione{
+  text-align:center;
+  color:#4b0f1c;
+  margin-bottom:40px;
+}
+
+.griglia-prodotti{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  border:2px solid #4b0f1c;
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:15px;
+  text-align:center;
+}
+
+.add-btn{
+  background:#4b0f1c;
+  color:#fff;
+  border:none;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.contatti-box,.chi-sono,.social-box{
+  background:#f5f5f5;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.social-box a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin:10px;
+  padding:12px 18px;
+  background:#4b0f1c;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.social-box a:hover{
+  background:#2d0912;
+}
+
+footer{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+}
+
+.torna-su{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#4b0f1c;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:1.5rem;
+  z-index:999;
+}
+
+.cart{
+  position:fixed;
+  top:0;
+  right:-320px;
+  width:300px;
+  height:100%;
+  background:#fff;
+  border-left:3px solid #4b0f1c;
+  padding:20px;
+  transition:0.3s;
+  z-index:1000;
+}
+
+.cart.open{
+  right:0;
+}
+
+.order-btn,
+.close-btn,
+.clear-btn{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  cursor:pointer;
+  background:#111;
+  color:#fff;
+  border-radius:8px;
+  font-weight:bold;
+  transition:0.2s;
+}
+
+.order-btn:hover,
+.close-btn:hover,
+.clear-btn:hover{
+  background:#4b0f1c;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+
+.modal-content{
+  background:#fff;
+  padding:20px;
+  width:90%;
+  max-width:400px;
+  border-radius:12px;
+}
+
+.modal-content textarea{
+  width:100%;
+  height:120px;
+  margin:10px 0;
+}
+
+.modal-content button{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  background:#4b0f1c;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  nav a{
+    margin:5px;
+    font-size:14px;
+  }
+
+  .griglia-prodotti{
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  }
+
+  .card img{
+    height:160px;
+  }
+}
+
+@media (max-width:480px){
+  nav a{
+    font-size:12px;
+    padding:4px;
+  }
+
+  .modal-content{
+    width:95%;
+  }
+}
+
+/* CARRELLO */
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:15px 0;
+}
+
+.qty-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.qty-controls button{
+  width:28px;
+  height:28px;
+  border:none;
+  background:#4b0f1c;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+/* BOTTONE TELEFONO */
+
+.phone-btn{
+  display:none;
+}
+
+@media (max-width:768px){
+
+  .phone-btn{
+    display:inline-block;
+    margin-top:15px;
+    background:#4b0f1c;
+    color:white;
+    padding:12px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+  }
+
+}
+.logo{
+  width:140px;
+  max-width:80%;
+  margin-bottom:20px;
+  border-radius:20px;
+  object-fit:cover;
+}
+@media (max-width:768px){
+
+  .logo{
+    width:100px;
+  }
+
+}
+.clear-btn{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  cursor:pointer;
+  background:#111;
+  color:#fff;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.clear-btn:hover{
+  background:#4b0f1c;
+}

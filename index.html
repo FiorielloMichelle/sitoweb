@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cocotte minute</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+
+<header>
+  <img src="logo.jpg" alt="Logo" class="logo">
+  <h1>Creazioni Fatte a Mano</h1>
+  <p>Accessori unici realizzati con passione e cura</p>
+</header>
+
+<nav>
+  <a href="#cappelli">Cappelli</a>
+  <a href="#orecchini">Orecchini</a>
+  <a href="#collane">Collane</a>
+  <a href="#borse">Borse</a>
+  <a href="#chi-sono">Chi Sono</a>
+  <a href="#contatti">Contatti</a>
+  <a href="#social">Social</a>
+  <a href="#" onclick="toggleCart()">🛒 Carrello (<span id="cart-count">0</span>)</a>
+</nav>
+
+<!-- CARRELLO -->
+<div id="cart" class="cart">
+
+  <h3>Il tuo ordine</h3>
+
+  <div id="cart-items"></div>
+
+  <button class="order-btn" onclick="openOrderModal()">
+    Invia richiesta ordine
+  </button>
+
+  <button class="clear-btn" onclick="clearCart()">
+    🛒 Svuota carrello
+  </button>
+
+  <button class="close-btn" onclick="toggleCart()">
+    Chiudi
+  </button>
+
+</div>
+
+<!-- MODALE ORDINE -->
+<div id="orderModal" class="modal">
+
+  <div class="modal-content">
+
+    <h3>Personalizza qui il tuo messaggio</h3>
+
+    <textarea id="orderText"></textarea>
+
+    <button onclick="sendEmail()">✉️ Invia con Gmail</button>
+    <button onclick="sendWhatsApp()">📞 WhatsApp</button>
+    <button onclick="closeModal()">Annulla</button>
+
+  </div>
+
+</div>
+
+<!-- CAPPELLI -->
+<section id="cappelli">
+
+  <h2 class="titolo-sezione">Cappelli</h2>
+
+  <div class="griglia-prodotti">
+
+    <div class="card">
+      <img src="capbianco.jpg" alt="Cappello Bianco">
+      <div class="card-content">
+        <h3>Cappello Bianco</h3>
+        <button class="add-btn" onclick="addToCart('Cappello Bianco')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="caprosso.jpg" alt="Cappello Rosso">
+      <div class="card-content">
+        <h3>Cappello Rosso</h3>
+        <button class="add-btn" onclick="addToCart('Cappello Rosso')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="capblu.jpg" alt="Cappello Blu">
+      <div class="card-content">
+        <h3>Cappello Blu</h3>
+        <button class="add-btn" onclick="addToCart('Cappello Blu')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="caprosa.jpg" alt="Cappello Rosa">
+      <div class="card-content">
+        <h3>Cappello Rosa</h3>
+        <button class="add-btn" onclick="addToCart('Cappello Rosa')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BORSE -->
+<section id="borse">
+
+  <h2 class="titolo-sezione">Borse</h2>
+
+  <div class="griglia-prodotti">
+
+    <div class="card">
+      <img src="borsaarg.jpg" alt="Borsa Argento">
+      <div class="card-content">
+        <h3>Borsa Argento</h3>
+        <button class="add-btn" onclick="addToCart('Borsa Argento')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="borsabianca.jpg" alt="Borsa Bianca">
+      <div class="card-content">
+        <h3>Borsa Bianca</h3>
+        <button class="add-btn" onclick="addToCart('Borsa Bianca')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="borsablu.jpg" alt="Borsa Blu">
+      <div class="card-content">
+        <h3>Borsa Blu</h3>
+        <button class="add-btn" onclick="addToCart('Borsa Blu')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="borsamirt.jpg" alt="Borsa Mirtillo">
+      <div class="card-content">
+        <h3>Borsa Mirtillo</h3>
+        <button class="add-btn" onclick="addToCart('Borsa Mirtillo')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="borsanera.jpg" alt="Borsa Nera">
+      <div class="card-content">
+        <h3>Borsa Nera</h3>
+        <button class="add-btn" onclick="addToCart('Borsa Nera')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="borsaara.jpg" alt="Borsa Arancione">
+      <div class="card-content">
+        <h3>Borsa Arancione</h3>
+        <button class="add-btn" onclick="addToCart('Borsa Arancione')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="borsazaino.jpg" alt="Zaino">
+      <div class="card-content">
+        <h3>Zaino</h3>
+        <button class="add-btn" onclick="addToCart('Zaino')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="borsacol.jpg" alt="Borsa Colorata">
+      <div class="card-content">
+        <h3>Borsa Colorata</h3>
+        <button class="add-btn" onclick="addToCart('Borsa Colorata')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ORECCHINI -->
+<section id="orecchini">
+
+  <h2 class="titolo-sezione">Orecchini</h2>
+
+  <div class="griglia-prodotti">
+
+    <div class="card">
+      <img src="orecchini.jpg" alt="Orecchini">
+      <div class="card-content">
+        <h3>Orecchini</h3>
+        <button class="add-btn" onclick="addToCart('Orecchini')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="orecchini1.jpg" alt="Orecchini 1">
+      <div class="card-content">
+        <h3>Orecchini</h3>
+        <button class="add-btn" onclick="addToCart('Orecchini 1')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="orecchini2.jpg" alt="Orecchini 2">
+      <div class="card-content">
+        <h3>Orecchini</h3>
+        <button class="add-btn" onclick="addToCart('Orecchini 2')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="orecchini3.jpg" alt="Orecchini 3">
+      <div class="card-content">
+        <h3>Orecchini</h3>
+        <button class="add-btn" onclick="addToCart('Orecchini 3')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="orecchini4.jpg" alt="Orecchini 4">
+      <div class="card-content">
+        <h3>Orecchini</h3>
+        <button class="add-btn" onclick="addToCart('Orecchini 4')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="orecchini5.jpg" alt="Orecchini 5">
+      <div class="card-content">
+        <h3>Orecchini</h3>
+        <button class="add-btn" onclick="addToCart('Orecchini 5')">Aggiungi al carrello</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COLLANE -->
+<section id="collane">
+
+  <h2 class="titolo-sezione">Collane</h2>
+
+  <div class="griglia-prodotti">
+    <div class="card">
+      <img src="collana.jpg" alt="Collana">
+      <div class="card-content">
+        <h3>Collana Artigianale</h3>
+        <button class="add-btn" onclick="addToCart('Collana Artigianale')">Aggiungi al carrello</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CHI SONO -->
+<section id="chi-sono">
+  <h2 class="titolo-sezione">Chi Sono</h2>
+  <div class="chi-sono">
+    <p>Ho iniziato facendo delle collane e orecchini per caso, mi sono accorta che piacevano e che, con mia grande soddisfazione, venivano acquistate. 
+      Per le mie collane uso materiali diversi spesso di riciclo, come stoffe, lane, legni e quello che trovo e che mi ispira. 
+      Alle collane ho aggiunto i lavori a uncinetto come borse, guanti, cappelli, sciarpe, coperte.
+      L’uncinetto è una passione che ho avuto sin da bambina, grazie alla mia nonna che mi ha insegnato. 
+      Faccio anche lavori su richiesta.
+      </p>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+
+  <h2 class="titolo-sezione">Contatti</h2>
+
+  <div class="contatti-box">
+
+    <p>📞 3472631557</p>
+    <a href="tel:+393472631557" class="phone-btn">📞Chiama subito</a>
+
+    <p>✉️ sommariva.antonella@gmail.com</p>
+    <a href="mailto:sommariva.antonella@gmail.com" class="phone-btn">✉️ Invia email</a>
+
+  </div>
+
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+
+  <h2 class="titolo-sezione">Social</h2>
+
+  <div class="social-box">
+    <a href="https://instagram.com/tuoprofilo" target="_blank">📸 Instagram</a>
+    <a href="https://facebook.com/tuoprofilo" target="_blank">🌐 Facebook</a>
+  </div>
+
+</section>
+
+<footer>
+  <p>2026 Cocotte minute</p>
+</footer>
+
+<a href="#top" class="torna-su">↑</a>
+
+<script>
+
+/* SOLO MODIFICA MAIL GMAIL */
+
+function sendEmail(){
+
+  let text = document.getElementById('orderText').value;
+
+  let url = "https://mail.google.com/mail/?view=cm&fs=1"
+    + "&to=sommariva.antonella@gmail.com"
+    + "&su=" + encodeURIComponent("Nuovo ordine dal sito")
+    + "&body=" + encodeURIComponent(text);
+
+  window.open(url, "_blank");
+}
+
+
+let cart = [];
+
+function addToCart(item){
+  const existing = cart.find(p => p.name === item);
+  if(existing) existing.qty++;
+  else cart.push({name:item, qty:1});
+  updateCart();
+}
+
+function updateCart(){
+  let total = 0;
+  cart.forEach(i => total += i.qty);
+
+  document.getElementById("cart-count").innerText = total;
+
+  const cartItems = document.getElementById("cart-items");
+
+  if(cart.length === 0){
+    cartItems.innerHTML = "<p style='text-align:center;padding:20px;'>🛒Il carrello è vuoto</p>";
+    return;
+  }
+
+  cartItems.innerHTML = cart.map((item,index)=>
+    `<div class="cart-item">
+      <span>${item.name}</span>
+      <div class="qty-controls">
+        <button onclick="decreaseQty(${index})">-</button>
+        <span>${item.qty}</span>
+        <button onclick="increaseQty(${index})">+</button>
+      </div>
+    </div>`
+  ).join("");
+}
+
+function increaseQty(i){ cart[i].qty++; updateCart(); }
+function decreaseQty(i){ cart[i].qty>1 ? cart[i].qty-- : cart.splice(i,1); updateCart(); }
+
+function toggleCart(){
+  document.getElementById('cart').classList.toggle('open');
+  updateCart();
+}
+
+function clearCart(){
+  cart = [];
+  updateCart();
+}
+
+function openOrderModal(){
+  let text = "Ordine:\n\n";
+  cart.forEach(i => text += i.name+" x"+i.qty+"\n");
+  document.getElementById('orderText').value = text;
+  document.getElementById('orderModal').style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById('orderModal').style.display="none";
+}
+
+function sendWhatsApp(){
+  let text = document.getElementById('orderText').value;
+  window.open("https://wa.me/393472631557?text="+encodeURIComponent(text));
+}
+
+</script>
+
+</body>
+</html>
+
