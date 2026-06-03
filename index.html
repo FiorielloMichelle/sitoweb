@@ -9,46 +9,47 @@
 
 <body id="top">
 
+<!-- 🌍 LANGUAGE -->
+<div class="lang-switch">
+  <button onclick="setLang('it')">IT</button>
+  <button onclick="setLang('en')">EN</button>
+</div>
+
 <!-- TOP BAR -->
 <div class="topbar">
   <button onclick="toggleCart()">
-    🛒 Carrello (<span id="cart-count">0</span>)
+    🛒 <span data-i18n="cartTitle">Carrello</span> (<span id="cart-count">0</span>)
   </button>
 </div>
 
-<!-- CARRELLO -->
+<!-- CART -->
 <div id="cart" class="cart">
 
-  <h3>Il tuo ordine</h3>
+  <h3 data-i18n="cartTitle">Il tuo ordine</h3>
 
   <div id="cart-items"></div>
 
-  <!-- BOTTONI IN COLONNA -->
   <div class="cart-buttons">
-
-    <button class="btn" onclick="openOrder()">Acquista</button>
-    <button class="btn" onclick="clearCart()">Svuota carrello</button>
-    <button class="btn" onclick="toggleCart()">Chiudi</button>
-
+    <button class="btn" onclick="openOrder()" data-i18n="buy">Acquista</button>
+    <button class="btn" onclick="clearCart()" data-i18n="clear">Svuota carrello</button>
+    <button class="btn" onclick="toggleCart()" data-i18n="close">Chiudi</button>
   </div>
 
 </div>
 
-<!-- MODAL ORDINE -->
+<!-- MODAL -->
 <div id="orderModal" class="modal">
-
   <div class="modal-content">
 
-    <h3>Completa il tuo ordine</h3>
+    <h3 data-i18n="orderTitle">Completa il tuo ordine</h3>
 
     <textarea id="orderText"></textarea>
 
     <button class="btn" onclick="sendWhatsApp()">WhatsApp</button>
     <button class="btn" onclick="sendEmail()">Gmail</button>
-    <button class="btn" onclick="closeModal()">Chiudi</button>
+    <button class="btn" onclick="closeModal()" data-i18n="close">Chiudi</button>
 
   </div>
-
 </div>
 
 <!-- HERO -->
@@ -56,102 +57,97 @@
 
   <img src="logo.jpg" class="logo" alt="logo">
 
-  <h1>Cocotte Minute</h1>
+  <h1 id="hero-title">Cocotte Minute</h1>
 
-  <p>Creazioni fatte a mano, uniche e realizzate con passione.</p>
+  <p id="hero-text">Creazioni fatte a mano, uniche e realizzate con passione.</p>
 
 </header>
+
+<!-- ABOUT -->
 <section class="about-intro">
 
   <div class="about-box">
 
-    <h2>Chi sono</h2>
+    <h2 data-i18n="aboutTitle">Chi sono</h2>
 
-    <p class="about-subtitle">
-    Un piccolo laboratorio artigianale fatto di passione, creatività e mani che lavorano con cura.
+    <p class="about-subtitle" data-i18n="aboutSubtitle">
+      Un piccolo laboratorio artigianale fatto di passione, creatività e mani che lavorano con cura.
     </p>
 
-    <p>
-    Ho iniziato facendo delle collane e orecchini per caso, mi sono accorta che piacevano e che, con mia grande soddisfazione, venivano acquistate.
-	Per le mie collane uso materiali diversi spesso di riciclo, come stoffe, lane, legni e quello che trovo e che mi ispira.
-	Alle collane ho aggiunto i lavori a uncinetto come borse, guanti, cappelli, sciarpe, coperte.
-	L’uncinetto è una passione che ho avuto sin da bambina, grazie alla mia nonna che mi ha insegnato.
-	Faccio anche lavori su richiesta.
+    <p data-i18n="aboutText">
+      Ho iniziato facendo delle collane e orecchini per caso...
     </p>
 
   </div>
 
 </section>
+
 <!-- SEZIONI -->
 <section class="sezioni">
 
   <div class="block">
     <img src="caprosso.jpg">
     <div class="text">
-      <h2>Cappelli</h2>
-      <p>Accessori artigianali unici.</p>
-      <a class="btn" href="cappelli.html">Esplora</a>
+      <h2 data-i18n="cappelliTitle">Cappelli</h2>
+      <p data-i18n="cappelliDesc">Accessori artigianali unici.</p>
+      <a class="btn" href="cappelli.html" data-i18n="explore">Esplora</a>
     </div>
   </div>
 
   <div class="block">
     <img src="borsaarg.jpg">
     <div class="text">
-      <h2>Borse</h2>
-      <p>Realizzate a mano con materiali selezionati.</p>
-      <a class="btn" href="borse.html">Esplora</a>
+      <h2 data-i18n="borseTitle">Borse</h2>
+      <p data-i18n="borseDesc">Realizzate a mano con materiali selezionati.</p>
+      <a class="btn" href="borse.html" data-i18n="explore">Esplora</a>
     </div>
   </div>
 
   <div class="block">
     <img src="orecchini.jpg">
     <div class="text">
-      <h2>Orecchini</h2>
-      <p>Dettagli unici per ogni stile.</p>
-      <a class="btn" href="orecchini.html">Esplora</a>
+      <h2 data-i18n="orecchiniTitle">Orecchini</h2>
+      <p data-i18n="orecchiniDesc">Dettagli unici per ogni stile.</p>
+      <a class="btn" href="orecchini.html" data-i18n="explore">Esplora</a>
     </div>
   </div>
 
   <div class="block">
     <img src="col.jpg">
     <div class="text">
-      <h2>Collane</h2>
-      <p>Creazioni originali e artigianali.</p>
-      <a class="btn" href="collane.html">Esplora</a>
+      <h2 data-i18n="collaneTitle">Collane</h2>
+      <p data-i18n="collaneDesc">Creazioni originali e artigianali.</p>
+      <a class="btn" href="collane.html" data-i18n="explore">Esplora</a>
     </div>
   </div>
 
 </section>
 
-<!-- CONTATTI -->
+<!-- CONTACT -->
 <section class="contact">
 
-  <h2>Contatti</h2>
+  <h2 data-i18n="contactTitle">Contatti</h2>
 
   <p>📞 347 263 1557</p>
   <p>✉️ sommariva.antonella@gmail.com</p>
 
-  <p>Scrivimi per ordini personalizzati 💌</p>
+  <p data-i18n="contactText">Scrivimi per ordini personalizzati 💌</p>
 
 </section>
 
-<!-- TORNA SU -->
+<!-- TOP -->
 <a href="#top" class="scroll-top btn">↑</a>
 
 <script>
 
+/* ================= CART ================= */
+
 let cart = [];
 
 function addToCart(name){
-
   let item = cart.find(i => i.name === name);
-
-  if(item){
-    item.qty++;
-  } else {
-    cart.push({name:name, qty:1});
-  }
-
+  if(item) item.qty++;
+  else cart.push({name:name, qty:1});
   updateCart();
 }
 
@@ -159,7 +155,6 @@ function updateCart(){
 
   let total = 0;
   cart.forEach(i => total += i.qty);
-
   document.getElementById("cart-count").innerText = total;
 
   let box = document.getElementById("cart-items");
@@ -171,50 +166,26 @@ function updateCart(){
 
   box.innerHTML = cart.map((i,index)=>`
     <div class="cart-item">
-
-      <span class="cart-name">${i.name}</span>
-
+      <span>${i.name}</span>
       <div class="qty-controls">
         <button onclick="minus(${index})">-</button>
-        <span class="qty">${i.qty}</span>
+        <span>${i.qty}</span>
         <button onclick="plus(${index})">+</button>
       </div>
-
     </div>
   `).join("");
 }
 
-function plus(i){
-  cart[i].qty++;
-  updateCart();
-}
-
-function minus(i){
-  if(cart[i].qty > 1){
-    cart[i].qty--;
-  } else {
-    cart.splice(i,1);
-  }
-  updateCart();
-}
-
-function clearCart(){
-  cart = [];
-  updateCart();
-}
-
-function toggleCart(){
-  document.getElementById("cart").classList.toggle("open");
-}
+function plus(i){ cart[i].qty++; updateCart(); }
+function minus(i){ cart[i].qty>1 ? cart[i].qty-- : cart.splice(i,1); updateCart(); }
+function clearCart(){ cart=[]; updateCart(); }
+function toggleCart(){ document.getElementById("cart").classList.toggle("open"); }
 
 function openOrder(){
-
   let text = "Vorrei ordinare:\n\n";
-
   cart.forEach(i=>{
     text += "- " + i.name + " x" + i.qty + "\n";
   });
-
   document.getElementById("orderText").value = text;
   document.getElementById("orderModal").style.display="flex";
 }
@@ -230,14 +201,98 @@ function sendWhatsApp(){
 
 function sendEmail(){
   let text = document.getElementById("orderText").value;
-
-  let url = "https://mail.google.com/mail/?view=cm&fs=1"
+  let url =
+    "https://mail.google.com/mail/?view=cm&fs=1"
     + "&to=sommariva.antonella@gmail.com"
     + "&su=COCOTTE MINUTE - ORDINE"
     + "&body=" + encodeURIComponent(text);
 
-  window.open(url, "_blank");
+  window.open(url,"_blank");
 }
+
+/* ================= LANGUAGE ================= */
+
+const t = {
+  it: {
+    heroTitle:"Cocotte Minute",
+    heroText:"Creazioni fatte a mano, uniche e realizzate con passione.",
+
+    cappelliTitle:"Cappelli",
+    cappelliDesc:"Accessori artigianali unici.",
+    borseTitle:"Borse",
+    borseDesc:"Realizzate a mano con materiali selezionati.",
+    orecchiniTitle:"Orecchini",
+    orecchiniDesc:"Dettagli unici per ogni stile.",
+    collaneTitle:"Collane",
+    collaneDesc:"Creazioni originali e artigianali.",
+    explore:"Esplora",
+
+    aboutTitle:"Chi sono",
+    aboutSubtitle:"Un piccolo laboratorio artigianale fatto di passione, creatività e mani che lavorano con cura.",
+    aboutText:
+`Ho iniziato facendo delle collane e orecchini per caso, mi sono accorta che piacevano e che, con mia grande soddisfazione, venivano acquistate. 
+Per le mie collane uso materiali diversi spesso di riciclo, come stoffe, lane, legni e quello che trovo e che mi ispira. 
+Alle collane ho aggiunto i lavori a uncinetto come borse, guanti, cappelli, sciarpe, coperte. 
+L’uncinetto è una passione che ho avuto sin da bambina, grazie alla mia nonna che mi ha insegnato. 
+Faccio anche lavori su richiesta.`,
+
+    contactTitle:"Contatti",
+    contactText:"Scrivimi per ordini personalizzati 💌",
+
+    cartTitle:"Il tuo ordine",
+    buy:"Acquista",
+    clear:"Svuota carrello",
+    close:"Chiudi",
+    orderTitle:"Completa il tuo ordine"
+  },
+
+  en: {
+    heroTitle:"Cocotte Minute",
+    heroText:"Unique handmade creations made with passion and care.",
+
+    cappelliTitle:"Hats",
+    cappelliDesc:"Unique handmade accessories.",
+    borseTitle:"Bags",
+    borseDesc:"Handmade with selected materials.",
+    orecchiniTitle:"Earrings",
+    orecchiniDesc:"Unique details for every style.",
+    collaneTitle:"Necklaces",
+    collaneDesc:"Original handmade creations.",
+    explore:"Explore",
+
+    aboutTitle:"About me",
+    aboutSubtitle:"A small handmade workshop driven by passion, creativity and skilled hands.",
+    aboutText:
+`I started by making necklaces and earrings by chance, and I realized they were appreciated and happily purchased. 
+For my necklaces I use different materials, often recycled such as fabrics, wool, wood and anything that inspires me. 
+I later added crochet works such as bags, gloves, hats, scarves and blankets. 
+Crochet has been a passion of mine since childhood thanks to my grandmother who taught me. 
+I also create custom-made pieces on request.`,
+
+    contactTitle:"Contact",
+    contactText:"Contact me for custom orders 💌",
+
+    cartTitle:"Your order",
+    buy:"Checkout",
+    clear:"Clear cart",
+    close:"Close",
+    orderTitle:"Complete your order"
+  }
+};
+
+function setLang(lang){
+  localStorage.setItem("lang",lang);
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(t[lang][key]) el.innerText = t[lang][key];
+  });
+
+  document.getElementById("hero-title").innerText = t[lang].heroTitle;
+  document.getElementById("hero-text").innerText = t[lang].heroText;
+}
+
+window.onload = ()=>setLang(localStorage.getItem("lang")||"it");
 
 </script>
 
