@@ -9,9 +9,14 @@
 
 <body>
 
-<!-- TOP BAR CARRELLO -->
-<div class="topbar">
-  <button class="cart-icon" onclick="toggleCart()">
+<!-- TOP BAR CARRELLO E TRADUZIONE -->
+<div class="topbar" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #f8f9fa; border-bottom: 1px solid #ddd;">
+  
+  <!-- Widget Google Translate -->
+  <div id="google_translate_element"></div>
+
+  <!-- Pulsante Carrello -->
+  <button class="cart-icon" onclick="toggleCart()" style="cursor: pointer;">
     🛒 Carrello (<span id="cart-count">0</span>)
   </button>
 </div>
@@ -223,7 +228,16 @@ function sendEmail(){
   window.open(url, "_blank");
 }
 
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'it',
+    includedLanguages: 'en,it',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
 </script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
