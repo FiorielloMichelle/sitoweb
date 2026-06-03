@@ -1,142 +1,209 @@
+:root{
+  --bordeaux:#4b0f1c;
+  --black:#0f0f0f;
+  --gray:#f2f2f2;
+}
+
+/* RESET */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Arial, sans-serif;
 }
 
 body{
-  background:#fff;
+  background:white;
   color:#111;
   line-height:1.6;
 }
 
-header{
-  background:#4b0f1c;
-  color:#fff;
+/* =========================
+   HERO
+========================= */
+.hero-top{
   text-align:center;
-  padding:50px 20px;
+  padding:90px 20px 60px;
+  background:var(--black);
+  color:white;
 }
 
-nav{
-  background:#111;
-  text-align:center;
-  padding:15px;
-  position:sticky;
-  top:0;
-  z-index:10;
+.hero-top h1{
+  font-size:40px;
+  margin-top:10px;
 }
 
-nav a{
-  color:#fff;
-  margin:0 10px;
-  text-decoration:none;
-  font-weight:bold;
+.hero-top p{
+  max-width:600px;
+  margin:15px auto 0;
+  color:#cfcfcf;
 }
 
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:60px 20px;
-}
-
-.titolo-sezione{
-  text-align:center;
-  color:#4b0f1c;
-  margin-bottom:40px;
-}
-
-.griglia-prodotti{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  border:2px solid #4b0f1c;
+.logo{
+  width:110px;
   border-radius:12px;
-  overflow:hidden;
-  background:#fff;
+  margin-bottom:10px;
 }
 
-.card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-
-.card-content{
-  padding:15px;
-  text-align:center;
-}
-
-.add-btn{
-  background:#4b0f1c;
-  color:#fff;
-  border:none;
-  padding:10px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.contatti-box,.chi-sono,.social-box{
-  background:#f5f5f5;
-  padding:25px;
-  border-radius:12px;
-  text-align:center;
-}
-
-.social-box a{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin:10px;
-  padding:12px 18px;
-  background:#4b0f1c;
-  color:#fff;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:bold;
-}
-
-.social-box a:hover{
-  background:#2d0912;
-}
-
-footer{
-  background:#111;
-  color:#fff;
-  text-align:center;
-  padding:20px;
-  margin-top:40px;
-}
-
-.torna-su{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  background:#4b0f1c;
-  color:#fff;
+/* =========================
+   SEZIONI
+========================= */
+.sezioni{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  font-size:1.5rem;
-  z-index:999;
+  flex-direction:column;
+  gap:40px;
+  padding:60px 20px;
+  max-width:1000px;
+  margin:auto;
 }
 
+/* =========================
+   BLOCCO PRODOTTI
+========================= */
+.block{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  padding:18px;
+  border-radius:14px;
+  overflow:hidden;
+  background:white;
+}
+
+/* 🔥 BORDO ANIMATO */
+.block::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  padding:10px;
+  border-radius:14px;
+
+  background:linear-gradient(
+    120deg,
+    #8a1a2b,
+    #000,
+    #4b0f1c,
+    #000,
+    #6a1220
+  );
+
+  background-size:500% 500%;
+  animation:borderMove 8s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events:none;
+
+  box-shadow:
+    0 0 25px rgba(75,15,28,0.6),
+    0 0 50px rgba(75,15,28,0.3);
+}
+
+/* ANIMAZIONE BORDO */
+@keyframes borderMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* IMMAGINE */
+.block img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* =========================
+   TESTO CENTRATO (FIX RICHIESTO)
+========================= */
+.text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  padding:5px 20px 15px 20px;
+}
+
+/* TITOLO ATTACCATO AL BORDO SUPERIORE */
+.text h2{
+  color:var(--bordeaux);
+  font-size:24px;
+
+  margin:0;
+  margin-top:0;
+
+  /* lo porta in alto nel blocco */
+  align-self:center;
+
+  position:relative;
+  top:-8px; /* 🔥 lo avvicina al bordo animato */
+}
+
+/* DESCRIZIONE */
+.text p{
+  color:#555;
+  margin:10px 0 15px 0;
+  max-width:280px;
+  align-self:center;
+}
+
+/* BOTTONE */
+.text a{
+  display:inline-block;
+  padding:10px 20px;
+  background:var(--bordeaux);
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  transition:0.3s;
+  align-self:center;
+}
+
+.text a:hover{
+  background:#2b0a10;
+  transform:scale(1.05);
+}
+
+/* =========================
+   TOP BAR CARRELLO
+========================= */
+.topbar{
+  position:fixed;
+  top:0;
+  right:0;
+  background:#0f0f0f;
+  padding:12px 16px;
+  z-index:9999;
+  border-bottom-left-radius:10px;
+}
+
+.cart-icon{
+  background:none;
+  border:none;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* =========================
+   CARRELLO
+========================= */
 .cart{
   position:fixed;
-  top:0;
-  right:-320px;
-  width:300px;
+  top:60px;
+  right:-350px;
+  width:320px;
   height:100%;
-  background:#fff;
-  border-left:3px solid #4b0f1c;
-  padding:20px;
+  background:white;
+  border-left:3px solid var(--bordeaux);
+  padding:15px;
   transition:0.3s;
   z-index:1000;
 }
@@ -145,34 +212,30 @@ footer{
   right:0;
 }
 
-.order-btn,
-.close-btn,
-.clear-btn{
-  width:100%;
-  margin-top:10px;
-  padding:10px;
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  margin:10px 0;
+  align-items:center;
+}
+
+.cart-item button{
+  background:var(--bordeaux);
+  color:white;
   border:none;
+  width:25px;
+  height:25px;
+  border-radius:4px;
   cursor:pointer;
-  background:#111;
-  color:#fff;
-  border-radius:8px;
-  font-weight:bold;
-  transition:0.2s;
 }
 
-.order-btn:hover,
-.close-btn:hover,
-.clear-btn:hover{
-  background:#4b0f1c;
-}
-
+/* =========================
+   MODAL ORDINE
+========================= */
 .modal{
   display:none;
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:rgba(0,0,0,0.6);
   justify-content:center;
   align-items:center;
@@ -180,134 +243,241 @@ footer{
 }
 
 .modal-content{
-  background:#fff;
+  background:white;
   padding:20px;
   width:90%;
   max-width:400px;
-  border-radius:12px;
+  border-radius:10px;
 }
 
 .modal-content textarea{
   width:100%;
-  height:120px;
-  margin:10px 0;
+  height:150px;
+  margin-top:10px;
 }
 
-.modal-content button{
+/* =========================
+   CONTATTI
+========================= */
+.contact{
+  text-align:center;
+  padding:80px 20px;
+  background:var(--gray);
+}
+
+/* =========================
+   TORNA SU
+========================= */
+.scroll-top{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--bordeaux);
+  color:white;
+  padding:12px;
+  border-radius:50%;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+  .block{
+    grid-template-columns:1fr;
+  }
+
+  .block img{
+    height:220px;
+  }
+
+  .hero-top h1{
+    font-size:32px;
+  }
+}
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+  padding:50px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.product-card{
+  border:2px solid var(--bordeaux);
+  border-radius:14px;
+  overflow:hidden;
+  background:white;
+  transition:0.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.product-card img{
   width:100%;
-  margin-top:10px;
-  padding:10px;
+  height:250px;
+  object-fit:cover;
+}
+
+.product-info{
+  text-align:center;
+  padding:15px;
+}
+
+.product-info h2{
+  color:var(--bordeaux);
+  margin-bottom:8px;
+}
+
+.product-info p{
+  color:#666;
+  margin-bottom:12px;
+}
+
+.product-info button{
+  padding:10px 18px;
+  background:var(--bordeaux);
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.product-info button:hover{
+  background:#2b0a10;
+  transform:scale(1.05);
+}
+.btn,
+button,
+.cart button,
+.modal-content button,
+.block a,
+.product-info button{
+  display:inline-block;
+  padding:10px 18px;
   background:#4b0f1c;
   color:#fff;
   border:none;
   border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
   cursor:pointer;
+  transition:0.3s;
 }
 
-/* RESPONSIVE */
-@media (max-width:768px){
-  nav{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  nav a{
-    margin:5px;
-    font-size:14px;
-  }
-
-  .griglia-prodotti{
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  }
-
-  .card img{
-    height:160px;
-  }
+.btn:hover,
+button:hover,
+.block a:hover,
+.product-info button:hover{
+  background:#2b0a10;
+  transform:scale(1.05);
 }
-
-@media (max-width:480px){
-  nav a{
-    font-size:12px;
-    padding:4px;
-  }
-
-  .modal-content{
-    width:95%;
-  }
-}
-
-/* CARRELLO */
-
-.cart-item{
+.cart-buttons{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:15px 0;
+  flex-direction:column;
+  gap:12px;
+  margin-top:15px;
 }
 
+/* più spazio sotto "Acquista" */
+.cart-buttons button:first-child{
+  margin-bottom:10px;
+}
+/* =========================
+   FIX SOLO CARRELLO (SAFE PATCH)
+========================= */
+
+/* spazio generale carrello → contenuto più pulito */
+.cart{
+  padding-bottom:30px;
+}
+
+/* item più leggibili ma NON cambia layout globale */
+.cart-item{
+  margin:14px 0;
+}
+
+/* + e - centrati meglio (solo locale carrello) */
 .qty-controls{
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:10px;
 }
 
 .qty-controls button{
-  width:28px;
-  height:28px;
-  border:none;
-  background:#4b0f1c;
-  color:white;
-  border-radius:5px;
-  cursor:pointer;
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* BOTTONE TELEFONO */
-
-.phone-btn{
-  display:none;
+/* TESTO "carrello vuoto" più separato */
+#cart-items p{
+  margin:30px 0 20px;
 }
 
-@media (max-width:768px){
+/* =========================
+   BOTTONI CARRELLO (UNICO FIX IMPORTANTE)
+========================= */
 
-  .phone-btn{
-    display:inline-block;
-    margin-top:15px;
-    background:#4b0f1c;
-    color:white;
-    padding:12px 18px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-  }
-
+.cart-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:18px;       /* spazio tra i bottoni */
+  margin-top:45px; /* distanza dal contenuto sopra */
 }
-.logo{
-  width:140px;
-  max-width:80%;
-  margin-bottom:20px;
-  border-radius:20px;
-  object-fit:cover;
-}
-@media (max-width:768px){
 
-  .logo{
-    width:100px;
-  }
-
-}
-.clear-btn{
+/* ogni bottone full width e separato bene */
+.cart-buttons button{
   width:100%;
-  margin-top:10px;
-  padding:10px;
-  border:none;
-  cursor:pointer;
-  background:#111;
-  color:#fff;
-  border-radius:8px;
-  font-weight:bold;
+  padding:12px;
 }
 
-.clear-btn:hover{
-  background:#4b0f1c;
+/* EXTRA SPAZIO SOLO TRA primo e secondo bottone */
+.cart-buttons button:first-child{
+  margin-bottom:6px;
+}
+.about-intro{
+  padding:70px 20px 30px;
+  background:var(--gray);
+}
+
+.about-box{
+  max-width:900px;
+  margin:auto;
+  background:white;
+  border:2px solid var(--bordeaux);
+  border-radius:14px;
+  padding:35px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+/* TITOLO "CHI SONO" */
+.about-box h2{
+  color:var(--bordeaux);
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+/* SOTTOTITOLO (IMPORTANTE PER FAR CAPIRE CHI È) */
+.about-subtitle{
+  font-style:italic;
+  color:#666;
+  margin-bottom:20px;
+}
+
+/* TESTO PRINCIPALE */
+.about-box p{
+  color:#333;
+  line-height:1.8;
+  font-size:16px;
 }

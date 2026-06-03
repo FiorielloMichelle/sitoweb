@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Borse - Cocotte Minute</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR CARRELLO -->
+<div class="topbar">
+  <button class="cart-icon" onclick="toggleCart()">
+    🛒 Carrello (<span id="cart-count">0</span>)
+  </button>
+</div>
+
+<!-- CARRELLO -->
+<div id="cart" class="cart">
+
+  <h3>Il tuo ordine</h3>
+  <div id="cart-items"></div>
+
+  <button onclick="openOrder()">Acquista</button>
+  <button onclick="clearCart()">Svuota carrello</button>
+  <button onclick="toggleCart()">Chiudi</button>
+
+</div>
+
+<!-- MODAL ORDINE -->
+<div id="orderModal" class="modal">
+
+  <div class="modal-content">
+
+    <h3>Completa il tuo ordine</h3>
+
+    <textarea id="orderText"></textarea>
+
+    <button onclick="sendWhatsApp()">📞 WhatsApp</button>
+    <button onclick="sendEmail()">✉️ Gmail</button>
+    <button onclick="closeModal()">Chiudi</button>
+
+  </div>
+
+</div>
+
+<!-- HERO -->
+<header class="hero-top">
+  <h1>Borse</h1>
+  <p>Collezione artigianale fatta a mano</p>
+</header>
+
+<!-- PRODUCTS -->
+<section class="product-grid">
+
+  <div class="product-card">
+    <img src="borsaarg.jpg">
+    <div class="product-info">
+      <h2>Borsa Argento</h2>
+      <p>Elegante e luminosa</p>
+      <button onclick="addToCart('Borsa Argento')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="borsabianca.jpg">
+    <div class="product-info">
+      <h2>Borsa Bianca</h2>
+      <p>Stile pulito e raffinato</p>
+      <button onclick="addToCart('Borsa Bianca')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="borsablu.jpg">
+    <div class="product-info">
+      <h2>Borsa Blu</h2>
+      <p>Perfetta per ogni occasione</p>
+      <button onclick="addToCart('Borsa Blu')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="borsamirt.jpg">
+    <div class="product-info">
+      <h2>Borsa Mirtillo</h2>
+      <p>Colorazione unica e vivace</p>
+      <button onclick="addToCart('Borsa Mirtillo')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="borsanera.jpg">
+    <div class="product-info">
+      <h2>Borsa Nera</h2>
+      <p>Classica e sempre elegante</p>
+      <button onclick="addToCart('Borsa Nera')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="borsaara.jpg">
+    <div class="product-info">
+      <h2>Borsa Arancione</h2>
+      <p>Look caldo e creativo</p>
+      <button onclick="addToCart('Borsa Arancione')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="borsazaino.jpg">
+    <div class="product-info">
+      <h2>Zaino</h2>
+      <p>Comodo e artigianale</p>
+      <button onclick="addToCart('Zaino')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="borsacol.jpg">
+    <div class="product-info">
+      <h2>Borsa Colorata</h2>
+      <p>Stile vivace e originale</p>
+      <button onclick="addToCart('Borsa Colorata')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- JS -->
+<script>
+
+let cart = [];
+
+function addToCart(name){
+  let item = cart.find(i => i.name === name);
+
+  if(item){
+    item.qty++;
+  } else {
+    cart.push({name:name, qty:1});
+  }
+
+  updateCart();
+}
+
+function updateCart(){
+
+  let total = 0;
+  cart.forEach(i => total += i.qty);
+
+  document.getElementById("cart-count").innerText = total;
+
+  let box = document.getElementById("cart-items");
+
+  if(cart.length === 0){
+    box.innerHTML = "<p>Carrello vuoto</p>";
+    return;
+  }
+
+  box.innerHTML = cart.map((i,index)=>`
+    <div class="cart-item">
+      <span>${i.name}</span>
+      <div>
+        <button onclick="minus(${index})">-</button>
+        ${i.qty}
+        <button onclick="plus(${index})">+</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function plus(i){ cart[i].qty++; updateCart(); }
+
+function minus(i){
+  if(cart[i].qty > 1){
+    cart[i].qty--;
+  } else {
+    cart.splice(i,1);
+  }
+  updateCart();
+}
+
+function clearCart(){
+  cart = [];
+  updateCart();
+}
+
+function toggleCart(){
+  document.getElementById("cart").classList.toggle("open");
+}
+
+function openOrder(){
+
+  let text = "Vorrei ordinare:\n\n";
+
+  cart.forEach(i=>{
+    text += "- " + i.name + " x" + i.qty + "\n";
+  });
+
+  document.getElementById("orderText").value = text;
+  document.getElementById("orderModal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("orderModal").style.display="none";
+}
+
+function sendWhatsApp(){
+  let text = document.getElementById("orderText").value;
+  window.open("https://wa.me/393472631557?text="+encodeURIComponent(text));
+}
+
+function sendEmail(){
+  let text = document.getElementById("orderText").value;
+
+  let url = "https://mail.google.com/mail/?view=cm&fs=1"
+    + "&to=sommariva.antonella@gmail.com"
+    + "&su=COCOTTE MINUTE - ORDINE"
+    + "&body=" + encodeURIComponent(text);
+
+  window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>

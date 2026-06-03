@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orecchini - Cocotte Minute</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR CARRELLO -->
+<div class="topbar">
+  <button class="cart-icon" onclick="toggleCart()">
+    🛒 Carrello (<span id="cart-count">0</span>)
+  </button>
+</div>
+
+<!-- CARRELLO -->
+<div id="cart" class="cart">
+
+  <h3>Il tuo ordine</h3>
+  <div id="cart-items"></div>
+
+  <button onclick="openOrder()">Acquista</button>
+  <button onclick="clearCart()">Svuota carrello</button>
+  <button onclick="toggleCart()">Chiudi</button>
+
+</div>
+
+<!-- MODAL ORDINE -->
+<div id="orderModal" class="modal">
+
+  <div class="modal-content">
+
+    <h3>Completa il tuo ordine</h3>
+
+    <textarea id="orderText"></textarea>
+
+    <button onclick="sendWhatsApp()">📞 WhatsApp</button>
+    <button onclick="sendEmail()">✉️ Gmail</button>
+    <button onclick="closeModal()">Chiudi</button>
+
+  </div>
+
+</div>
+
+<!-- HERO -->
+<header class="hero-top">
+  <h1>Orecchini</h1>
+  <p>Piccole creazioni artigianali fatte a mano</p>
+</header>
+
+<!-- PRODUCTS -->
+<section class="product-grid">
+
+  <div class="product-card">
+    <img src="orecchini.jpg">
+    <div class="product-info">
+      <h2>Orecchini</h2>
+      <p>Design semplice ed elegante</p>
+      <button onclick="addToCart('Orecchini Classici')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="orecchini1.jpg">
+    <div class="product-info">
+      <h2>Orecchini</h2>
+      <p>Stile delicato e luminoso</p>
+      <button onclick="addToCart('Orecchini 1')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="orecchini2.jpg">
+    <div class="product-info">
+      <h2>Orecchini</h2>
+      <p>Look moderno e artigianale</p>
+      <button onclick="addToCart('Orecchini 2')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="orecchini3.jpg">
+    <div class="product-info">
+      <h2>Orecchini</h2>
+      <p>Colori vivaci e creativi</p>
+      <button onclick="addToCart('Orecchini 3')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="orecchini4.jpg">
+    <div class="product-info">
+      <h2>Orecchini</h2>
+      <p>Eleganza fatta a mano</p>
+      <button onclick="addToCart('Orecchini 4')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="orecchini5.jpg">
+    <div class="product-info">
+      <h2>Orecchini</h2>
+      <p>Stile unico e originale</p>
+      <button onclick="addToCart('Orecchini 5')">Aggiungi al carrello</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- JS CARRELLO -->
+<script>
+
+let cart = [];
+
+function addToCart(name){
+  let item = cart.find(i => i.name === name);
+
+  if(item){
+    item.qty++;
+  } else {
+    cart.push({name:name, qty:1});
+  }
+
+  updateCart();
+}
+
+function updateCart(){
+
+  let total = 0;
+  cart.forEach(i => total += i.qty);
+
+  document.getElementById("cart-count").innerText = total;
+
+  let box = document.getElementById("cart-items");
+
+  if(cart.length === 0){
+    box.innerHTML = "<p>Carrello vuoto</p>";
+    return;
+  }
+
+  box.innerHTML = cart.map((i,index)=>`
+    <div class="cart-item">
+      <span>${i.name}</span>
+      <div>
+        <button onclick="minus(${index})">-</button>
+        ${i.qty}
+        <button onclick="plus(${index})">+</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function plus(i){ cart[i].qty++; updateCart(); }
+
+function minus(i){
+  if(cart[i].qty > 1){
+    cart[i].qty--;
+  } else {
+    cart.splice(i,1);
+  }
+  updateCart();
+}
+
+function clearCart(){
+  cart = [];
+  updateCart();
+}
+
+function toggleCart(){
+  document.getElementById("cart").classList.toggle("open");
+}
+
+function openOrder(){
+
+  let text = "Vorrei ordinare:\n\n";
+
+  cart.forEach(i=>{
+    text += "- " + i.name + " x" + i.qty + "\n";
+  });
+
+  document.getElementById("orderText").value = text;
+  document.getElementById("orderModal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("orderModal").style.display="none";
+}
+
+function sendWhatsApp(){
+  let text = document.getElementById("orderText").value;
+  window.open("https://wa.me/393472631557?text="+encodeURIComponent(text));
+}
+
+function sendEmail(){
+  let text = document.getElementById("orderText").value;
+
+  let url = "https://mail.google.com/mail/?view=cm&fs=1"
+    + "&to=sommariva.antonella@gmail.com"
+    + "&su=COCOTTE MINUTE - ORDINE"
+    + "&body=" + encodeURIComponent(text);
+
+  window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
